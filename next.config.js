@@ -5,8 +5,6 @@ const nextConfig = {
 
 }
 
-module.exports = {images: {
-    loader: 'imgix',
-    path: '',
-  },
-  nextConfig}
+module.exports = {
+  nextConfig
+}
