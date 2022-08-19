@@ -1,0 +1,9 @@
+//robots.txt
+
+# Block all crawlers for /exits
+User-agent: *
+Disallow: /exits
+
+# Allow all crawlers
+User-agent: *
+Allow: /
