@@ -8,7 +8,6 @@ export default function Home() {
     <div className={styles.container}>
       <main className={styles.main}>
         <h1 className={styles.title}>Exit &Uuml;bersicht</h1>
-        <hr />
         <Exits />
       </main>
     </div>

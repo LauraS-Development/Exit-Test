@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            color: white;
+        }
+        .tab {
+            overflow: hidden;
+            /*border: 1px solid #ccc;*/
+            background-color: #000;
+            text-align: center;
+        }
+
+        .tab button {
+            background-color: inherit;
+            /*float: left;*/
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.5s;
+            font-size: 17px;
+
+        }
+
+        .tab button:hover {
+            background-color: #ddd;
+        }
+
+        .tablinksactive {
+            background-color: #111111 !important;
+        }
+
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            /*border: 1px solid #ccc;*/
+            border-top: none;
+        }
+
+        .tabcontentactive {
+            display: block;
+            /*border: 1px solid #ccc;*/
+        }
+
+        .lfm_api_schedule_table_playlist_now {
+            padding-top: 10px;
+            padding-bottom: 0px;
+            width: 100%;
+            background-color: #222222;
+            margin-bottom: 0 !important;
+            cursor: default;
+        }
+
+        .lfm_api_schedule_table_playlist_now:hover {
+            padding-top: 10px;
+            padding-bottom: 0px;
+            width: 100%;
+            background-color: #ddd;
+            margin-bottom: 0 !important;
+            cursor: default;
+        }
+
+        .lfm_api_schedule_table {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            margin-bottom: 0 !important;
+            width: 100%;
+        }
+
+        .lfm_api_schedule_table:hover {
+            background-color: #ddd;
+            cursor: default;
+            margin-bottom: 0 !important;
+        }
+
+        .lfm_api_schedule_description {
+            padding-top: 10px;
+            padding-bottom: 2px;
+            align-items: center;
+            font-weight: bold;
+            font-size: 17px;
+        }
+
+        .lfm_api_schedule_table_top {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            margin-bottom: 0 !important;
+            width: 100%;
+            cursor: default;
+        }
+
+
+
+        .lfm_api_schedule_time_top {
+            width: 60px;
+            text-align: center;
+            padding-right: 15px;
+            border-bottom: 0px solid rgba(0, 0, 0, 0.05) !important;
+            font-weight: bold;
+            font-size:17px;
+        }
+
+        .lfm_api_schedule_playlist_name_top {
+            display: flex;
+            border-bottom: 0px solid rgba(0, 0, 0, 0.05) !important;
+            text-align: left;
+            margin-left: 8px;
+            font-weight: bold;
+            font-size:17px;
+        }
+
+
+        .lfm_api_schedule_time {
+            width: 60px;
+            text-align: center;
+            padding-right: 25px;
+        }
+
+        .lfm_api_schedule_headline {
+            padding-top: 10px;
+            padding-bottom: 8px;
+            align-items: center;
+            font-weight: bold;
+            font-size: 17px;
+            cursor: default;
+        }
+
+        .lfm_api_schedule_description_headline {
+            padding-top: 10px;
+            padding-bottom: 8px;
+            align-items: center;
+            font-weight: bold;
+            font-size: 17px;
+            padding-left: 5px;
+        }
+
+        .lfm_api_schedule_time_headline {
+            width: 60px;
+            text-align: center;
+            padding-right: 25px;
+            padding-left: 3px;
+        }
+
+        .lfm_api_schedule_playlist_name {
+            display: flex;
+            border-bottom: 0px solid rgba(0, 0, 0, 0.05) !important;
+            text-align: left;
+            margin-left: 20px;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+
+        .lfm_api_schedule_playlist_description {
+            display: flex;
+            text-align: left;
+            margin-left: 20px;
+            border-bottom: 0px solid rgba(0, 0, 0, 0.05) !important;
+        }
+
+        .lfm_schedule {
+            display: none;
+        }
+
+        .lfm_schedule_no_entry {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        td {
+            vertical-align: middle !important;
+            padding: 0.2rem 0.5rem !important;
+        }
+    </style>
+</head>
+<body>
+<div id="lfm_schedule" class="lfm_schedule">
+    <div class="tab"><button class="tablinks">Montag</button> <button class="tablinks">Dienstag</button> <button class="tablinks">Mittwoch</button> <button class="tablinks">Donnerstag</button> <button class="tablinks">Freitag</button> <button class="tablinks">Samstag</button> <button class="tablinks">Sonntag</button></div>
+
+    <div class="tabcontent">
+        <div class="api_lfm_schedule">Loading...</div>
+    </div>
+
+    <div class="tabcontent">
+        <div class="api_lfm_schedule">Loading...</div>
+    </div>
+
+    <div class="tabcontent">
+        <div class="api_lfm_schedule">Loading...</div>
+    </div>
+
+    <div class="tabcontent">
+        <div class="api_lfm_schedule">Loading...</div>
+    </div>
+
+    <div class="tabcontent">
+        <div class="api_lfm_schedule">Loading...</div>
+    </div>
+
+    <div class="tabcontent">
+        <div class="api_lfm_schedule">Loading...</div>
+    </div>
+
+    <div class="tabcontent">
+        <div class="api_lfm_schedule">Loading...</div>
+    </div>
+
+</div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    var station = "edm-sounds";
+    var tablinks = Array.prototype.slice.call(document.getElementsByClassName("tablinks"));
+    var tabs = Array.prototype.slice.call(document.getElementsByClassName("api_lfm_schedule"));
+    var tabcontent = Array.prototype.slice.call(document.getElementsByClassName("tabcontent"));
+    function openDAY(day) {
+        var i;
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].className = tabcontent[i].className.replace("active", "");
+        }
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace("active", "");
+        }
+        tabcontent[day].className += "active";
+        tablinks[day].className += "active";
+    }
+
+    tablinks.forEach(function (tablink, day) {
+        tablink.addEventListener('click', function() {
+            openDAY(day)
+        })
+    })
+
+    jQuery(document).ready(function($) {
+        $(document).ready(function() {
+            function update_data() {
+                $.ajax({
+                    type: "GET",
+                    url: "https://api.laut.fm/station/" + station + "/schedule",
+                    dataType: "json",
+                    timeout: 5000,
+                }).done(function(schedule) {
+                    var get_day = (new Date().getDay() || 7) - 1;
+                    openDAY(get_day)
+                    if (schedule[0].end_time === null) {
+                        document.getElementsByClassName('lfm_schedule')[0].style.display = 'inline';
+                        document.getElementById('lfm_schedule').innerHTML = '<div class="lfm_schedule_no_entry">Der Sendeplan kann aktuell nicht angezeigt werden</div>';
+                    } else {
+                        document.getElementsByClassName('lfm_schedule')[0].style.display = 'inline';
+                        var no_entry = '<div class=no_entry">Leider keine Sendung</div>';
+                        var days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+                        var days_buffer = {mon: [], tue: [], wed: [], thu: [], fri: [], sat: [], sun: []};
+                        var groupLength = schedule.length;
+                        Array.prototype.slice.call(schedule).forEach(function(schedule_entry, index) {
+                            var start_time = schedule_entry.hour;
+                            if (start_time < 10) { start_time = '0' + start_time }
+                            var end_time = schedule_entry.end_time;
+                            if (end_time < 10) { end_time = '0' + end_time }
+                            start_time = start_time + ':00';
+                            end_time = end_time + ':00';
+                            if(index + 1 === groupLength) {
+                                var entryindex = "theend";
+                            } else {
+                                var entryindex = (index + 1);
+                            }
+                            if (schedule_entry.day === days[get_day] && schedule_entry.hour <= new Date().getHours()) {
+                                if (entryindex === "theend" || schedule[entryindex].day === days[get_day] && schedule[entryindex].hour > new Date().getHours() || schedule[entryindex].day != days[get_day]) {
+                                    days_buffer[schedule_entry.day].push('<table class="lfm_api_schedule_table_playlist_now"><tr style="border-top: 1px solid #cccbcb;"><td rowspan="2" class="lfm_api_schedule_time"><div style="font-size:12px;font-weight:bold; color:#FF0000;">ON AIR</div><div style="font-size:11px;font-weight:bold;">bis</div><div style="font-size:13px;font-weight:bold;">' + end_time + '</div></td><td rowspan="1" class="lfm_api_schedule_playlist_name"><div>' + schedule_entry.name + '</div></td><td rowspan="1" class="lfm_api_schedule_playlist_description"><div>' + schedule_entry.description + '<div></td></tr></table>');
+                                } else {
+                                    days_buffer[schedule_entry.day].push('<table class="lfm_api_schedule_table"><tr style="border-top: 1px solid #cccbcb;"><td rowspan="2" class="lfm_api_schedule_time"><div style="font-size:13px;font-weight:bold;">' + start_time + '</div><div style="font-size:11px;font-weight:bold;">bis</div><div style="font-size:13px;font-weight:bold;">' + end_time + '</div></td><td rowspan="1" class="lfm_api_schedule_playlist_name"><div>' + schedule_entry.name + '</div></td><td rowspan="1" class="lfm_api_schedule_playlist_description"><div>' + schedule_entry.description + '<div></td></tr></table>');
+                                }
+                            } else {
+                                days_buffer[schedule_entry.day].push('<table class="lfm_api_schedule_table"><tr style="border-top: 1px solid #cccbcb;"><td rowspan="2" class="lfm_api_schedule_time"><div style="font-size:13px;font-weight:bold;">' + start_time + '</div><div style="font-size:11px;font-weight:bold;">bis</div><div style="font-size:13px;font-weight:bold;">' + end_time + '</div></td><td rowspan="1" class="lfm_api_schedule_playlist_name"><div>' + schedule_entry.name + '</div></td><td rowspan="1" class="lfm_api_schedule_playlist_description"><div>' + schedule_entry.description + '<div></td></tr></table>');
+                            }
+                        });
+
+                        Array.prototype.slice.call(tabs).forEach(function(tab, index) {
+                            if (days_buffer[days[index]].length >= 1) {
+                                tab.innerHTML = days_buffer[days[index]].join('');
+                            } else {
+                                tab.innerHTML = no_entry;
+                            }
+                        });
+                    }
+                }).fail(function(xhr, status, error) {
+                    $('.api_lfm_station_listeners' + s_id[station_number] + '').html(obj.error_message);
+                    console.warn('Warning (API): Listeners reports: ' + xhr.status + ' ' + error + ' | Station name: /' + stations_array);
+                });
+            }
+            update_data();
+            setInterval(update_data, 30000);
+        });
+    });
+
+</script>
+</html>

@@ -192,3 +192,11 @@ a.exit{
   font-size: 1.7rem;
   text-align: center;
 }
+
+
+iframe#sp {
+  display: block;
+  width: 100%;
+  height:100vh;
+  border: none;
+}
