@@ -6,7 +6,7 @@ export default function Lo({ children }) {
   return (
     <div>
       <Head>
-        <title>Exits</title>
+        <title>Demo</title>
       </Head>
       <div>
         <Header />
