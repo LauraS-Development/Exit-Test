@@ -1,15 +1,14 @@
 import Head from "next/head";
-import Navbar from "../components/navbar";
+import Navbar from "./navbar";
 import Header from "./Header";
 import Footer from "./Footer";
 export default function Lo({ children }) {
   return (
     <div>
       <Head>
-        <title>Demo</title>
+        <title>ClubRadio Hof</title>
       </Head>
       <div>
-        <Header />
         <Navbar />
       </div>
       {children}

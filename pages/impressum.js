@@ -1,7 +1,7 @@
 export default function legal() {
   return (
     <>
-      <div className="m-x">
+      <div className="m-x legal">
         <h1>Impressum</h1>
         <h2 id="m46">Diensteanbieter</h2>
         <p>Milawe Media</p>

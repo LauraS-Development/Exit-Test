@@ -1,7 +1,7 @@
 export default function privacy() {
   return (
     <>
-      <div className="m-x">
+      <div className="m-x legal">
         <h1>Datenschutzerklärung</h1>
         <h2 id="m14">Einleitung</h2>
         <p>
